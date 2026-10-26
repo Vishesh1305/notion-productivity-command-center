@@ -1,0 +1,40 @@
+name: Verify
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  python:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.11', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install package and time zone data
+        run: python -m pip install -e . tzdata
+      - name: Run offline unit tests
+        run: python -m unittest discover -s tests -q
+      - name: Validate offline structural plan
+        run: |
+          command-center plan --json > "$RUNNER_TEMP/structural-plan.json"
+          python -m json.tool "$RUNNER_TEMP/structural-plan.json" > /dev/null
+
+  macos:
+    name: macOS wrappers
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check shell and LaunchAgent examples
+        run: |
+          for script in macos/*.sh; do zsh -n "$script"; done
+          for plist in macos/*.plist.example; do plutil -lint "$plist"; done

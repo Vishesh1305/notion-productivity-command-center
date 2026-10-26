@@ -1,0 +1,1368 @@
+{
+  "root": "Productivity Command Center",
+  "pages": [
+    "Home",
+    "Tasks",
+    "Projects",
+    "Goals & Areas",
+    "Notes",
+    "Habits & Reviews",
+    "Inbox",
+    "Start Here"
+  ],
+  "home_sections": [
+    "Daily Top 3",
+    "Calendar",
+    "Weekly priorities",
+    "Inbox",
+    "Active Projects",
+    "Weekly plan follow-through"
+  ],
+  "databases": {
+    "Tasks": {
+      "Name": {
+        "type": "title",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Record type": {
+        "type": "select",
+        "options": [
+          "Task",
+          "Series"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Status": {
+        "type": "status",
+        "options": [
+          "To do",
+          "In progress",
+          "Waiting",
+          "Done",
+          "Cancelled"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Commitment": {
+        "type": "select",
+        "options": [
+          "Committed",
+          "Someday"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Priority": {
+        "type": "select",
+        "options": [
+          "High",
+          "Normal",
+          "Low"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Due date": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Plan date": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Time block": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Project": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Projects",
+        "single": true,
+        "expression": null
+      },
+      "Standalone Area": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Areas",
+        "single": true,
+        "expression": null
+      },
+      "Parent Task": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Tasks",
+        "single": true,
+        "expression": null
+      },
+      "Blocked by": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Tasks",
+        "single": false,
+        "expression": null
+      },
+      "Waiting reason": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Follow-up date": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Non-blocking for phase": {
+        "type": "checkbox",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Series key": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Series": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Tasks",
+        "single": true,
+        "expression": null
+      },
+      "Recurrence pattern": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Recurrence rule": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Generation mode": {
+        "type": "select",
+        "options": [
+          "Native template",
+          "Managed local generator"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Recurrence start": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Recurrence end": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Plan / Due offset": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Occurrence date": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Occurrence key": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Completed at": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Cancelled at": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Cancellation reason": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Change note": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Needs attention": {
+        "type": "formula",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": "if(prop(\"Status\") == \"Done\" and empty(prop(\"Completed at\")), \"Done needs Completed at\", if(prop(\"Status\") == \"Cancelled\" and empty(prop(\"Cancelled at\")), \"Cancelled needs Cancelled at\", if(prop(\"Status\") == \"Waiting\" and empty(prop(\"Waiting reason\")), \"Waiting needs reason\", \"\")))"
+      }
+    },
+    "Projects": {
+      "Name": {
+        "type": "title",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Status": {
+        "type": "status",
+        "options": [
+          "Planned",
+          "Active",
+          "Paused",
+          "Done",
+          "Cancelled"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Primary Area": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Areas",
+        "single": true,
+        "expression": null
+      },
+      "Goal": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Goals",
+        "single": true,
+        "expression": null
+      },
+      "Parent Project": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Projects",
+        "single": true,
+        "expression": null
+      },
+      "Definition of done": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Target date": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Project kind": {
+        "type": "select",
+        "options": [
+          "Project",
+          "Phase"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Completed at": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Cancelled at": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Outcome note": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      }
+    },
+    "Goals": {
+      "Name": {
+        "type": "title",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Status": {
+        "type": "status",
+        "options": [
+          "Planned",
+          "Active",
+          "Paused",
+          "Achieved",
+          "Dropped"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Primary Area": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Areas",
+        "single": true,
+        "expression": null
+      },
+      "Review horizon": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Evidence definition": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Evidence summary": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Achieved at": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Dropped at": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      }
+    },
+    "Areas": {
+      "Name": {
+        "type": "title",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Purpose": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "State": {
+        "type": "select",
+        "options": [
+          "Active",
+          "Archived"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      }
+    },
+    "Notes": {
+      "Name": {
+        "type": "title",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Area": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Areas",
+        "single": true,
+        "expression": null
+      },
+      "Goal": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Goals",
+        "single": true,
+        "expression": null
+      },
+      "Project": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Projects",
+        "single": true,
+        "expression": null
+      },
+      "Source capture": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Capture Queue",
+        "single": true,
+        "expression": null
+      }
+    },
+    "Capture Queue": {
+      "Name": {
+        "type": "title",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Captured at": {
+        "type": "created_time",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Status": {
+        "type": "status",
+        "options": [
+          "New",
+          "Needs clarification",
+          "Processed"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Clarification question": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Processed at": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      }
+    },
+    "Habits": {
+      "Name": {
+        "type": "title",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Primary Area": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Areas",
+        "single": true,
+        "expression": null
+      },
+      "Cadence type": {
+        "type": "select",
+        "options": [
+          "Daily",
+          "Selected weekdays",
+          "N per week"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Weekdays": {
+        "type": "multi_select",
+        "options": [
+          "Mon",
+          "Tue",
+          "Wed",
+          "Thu",
+          "Fri",
+          "Sat",
+          "Sun"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Weekly target": {
+        "type": "number",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Status": {
+        "type": "select",
+        "options": [
+          "Active",
+          "Paused",
+          "Archived"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Start date": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "End date": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Numeric target": {
+        "type": "number",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Unit": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Replaces Habit": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Habits",
+        "single": true,
+        "expression": null
+      }
+    },
+    "Habit Check-ins": {
+      "Name": {
+        "type": "title",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Habit": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Habits",
+        "single": true,
+        "expression": null
+      },
+      "Event type": {
+        "type": "select",
+        "options": [
+          "Check-in",
+          "Pause started",
+          "Pause ended"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Occurrence date": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Check-in status": {
+        "type": "select",
+        "options": [
+          "Done",
+          "Excused"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Amount": {
+        "type": "number",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Note": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Event time": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Occurrence key": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      }
+    },
+    "Planning Log": {
+      "Name": {
+        "type": "title",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Period type": {
+        "type": "select",
+        "options": [
+          "Daily",
+          "Weekly",
+          "Monthly"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Period key": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Start": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "End": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "State": {
+        "type": "select",
+        "options": [
+          "Draft",
+          "Confirmed"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Proposed Top 1": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Tasks",
+        "single": true,
+        "expression": null
+      },
+      "Proposed Top 2": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Tasks",
+        "single": true,
+        "expression": null
+      },
+      "Proposed Top 3": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Tasks",
+        "single": true,
+        "expression": null
+      },
+      "Confirmed Top 1": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Tasks",
+        "single": true,
+        "expression": null
+      },
+      "Confirmed Top 2": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Tasks",
+        "single": true,
+        "expression": null
+      },
+      "Confirmed Top 3": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Tasks",
+        "single": true,
+        "expression": null
+      },
+      "Proposed priority 1": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Proposed priority 2": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Confirmed priority 1": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Confirmed priority 2": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Summary": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Change note": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Confirmed at": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Related week": {
+        "type": "relation",
+        "options": [],
+        "relation_target": "Planning Log",
+        "single": true,
+        "expression": null
+      },
+      "Confirmed slots": {
+        "type": "number",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Completed on planned day": {
+        "type": "number",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Metric needs attention": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Follow-through": {
+        "type": "formula",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": "if(prop(\"Confirmed slots\") == 0, \"No confirmed plan\", format(prop(\"Completed on planned day\")) + \" / \" + format(prop(\"Confirmed slots\")))"
+      }
+    },
+    "Calendar Events": {
+      "Name": {
+        "type": "title",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Kind": {
+        "type": "select",
+        "options": [
+          "Event",
+          "Sync health"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Start": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "End": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "All day": {
+        "type": "checkbox",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "State": {
+        "type": "select",
+        "options": [
+          "Current",
+          "Cancelled",
+          "Expired"
+        ],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Source calendar key": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Source occurrence key": {
+        "type": "rich_text",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Last seen at": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Last successful sync": {
+        "type": "date",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": null
+      },
+      "Sync freshness": {
+        "type": "formula",
+        "options": [],
+        "relation_target": null,
+        "single": false,
+        "expression": "if(empty(prop(\"Last successful sync\")), \"Never synced\", if(dateBetween(now(), prop(\"Last successful sync\"), \"minutes\") > 30, \"Stale\", \"Fresh\"))"
+      }
+    }
+  },
+  "views": [
+    {
+      "database": "Tasks",
+      "name": "All",
+      "filter": null,
+      "sorts": []
+    },
+    {
+      "database": "Tasks",
+      "name": "Today",
+      "filter": {
+        "and": [
+          {
+            "and": [
+              {
+                "property": "Record type",
+                "select": {
+                  "equals": "Task"
+                }
+              },
+              {
+                "property": "Commitment",
+                "select": {
+                  "equals": "Committed"
+                }
+              },
+              {
+                "or": [
+                  {
+                    "property": "Status",
+                    "status": {
+                      "equals": "To do"
+                    }
+                  },
+                  {
+                    "property": "Status",
+                    "status": {
+                      "equals": "In progress"
+                    }
+                  },
+                  {
+                    "property": "Status",
+                    "status": {
+                      "equals": "Waiting"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "property": "Plan date",
+            "date": {
+              "equals": "today"
+            }
+          }
+        ]
+      },
+      "sorts": []
+    },
+    {
+      "database": "Tasks",
+      "name": "Upcoming deadlines",
+      "filter": {
+        "and": [
+          {
+            "and": [
+              {
+                "property": "Record type",
+                "select": {
+                  "equals": "Task"
+                }
+              },
+              {
+                "property": "Commitment",
+                "select": {
+                  "equals": "Committed"
+                }
+              },
+              {
+                "or": [
+                  {
+                    "property": "Status",
+                    "status": {
+                      "equals": "To do"
+                    }
+                  },
+                  {
+                    "property": "Status",
+                    "status": {
+                      "equals": "In progress"
+                    }
+                  },
+                  {
+                    "property": "Status",
+                    "status": {
+                      "equals": "Waiting"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "property": "Due date",
+            "date": {
+              "is_not_empty": true
+            }
+          }
+        ]
+      },
+      "sorts": [
+        {
+          "property": "Due date",
+          "direction": "ascending"
+        }
+      ]
+    },
+    {
+      "database": "Tasks",
+      "name": "Waiting",
+      "filter": {
+        "property": "Status",
+        "status": {
+          "equals": "Waiting"
+        }
+      },
+      "sorts": [
+        {
+          "property": "Follow-up date",
+          "direction": "ascending"
+        }
+      ]
+    },
+    {
+      "database": "Tasks",
+      "name": "Backlog",
+      "filter": {
+        "and": [
+          {
+            "and": [
+              {
+                "property": "Record type",
+                "select": {
+                  "equals": "Task"
+                }
+              },
+              {
+                "property": "Commitment",
+                "select": {
+                  "equals": "Committed"
+                }
+              },
+              {
+                "or": [
+                  {
+                    "property": "Status",
+                    "status": {
+                      "equals": "To do"
+                    }
+                  },
+                  {
+                    "property": "Status",
+                    "status": {
+                      "equals": "In progress"
+                    }
+                  },
+                  {
+                    "property": "Status",
+                    "status": {
+                      "equals": "Waiting"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "property": "Status",
+            "status": {
+              "equals": "To do"
+            }
+          },
+          {
+            "property": "Plan date",
+            "date": {
+              "is_empty": true
+            }
+          }
+        ]
+      },
+      "sorts": []
+    },
+    {
+      "database": "Tasks",
+      "name": "Someday",
+      "filter": {
+        "property": "Commitment",
+        "select": {
+          "equals": "Someday"
+        }
+      },
+      "sorts": []
+    },
+    {
+      "database": "Tasks",
+      "name": "Completed",
+      "filter": {
+        "or": [
+          {
+            "property": "Status",
+            "status": {
+              "equals": "Done"
+            }
+          },
+          {
+            "property": "Status",
+            "status": {
+              "equals": "Cancelled"
+            }
+          }
+        ]
+      },
+      "sorts": []
+    },
+    {
+      "database": "Tasks",
+      "name": "Recurring series",
+      "filter": {
+        "property": "Record type",
+        "select": {
+          "equals": "Series"
+        }
+      },
+      "sorts": []
+    },
+    {
+      "database": "Tasks",
+      "name": "Needs attention",
+      "filter": {
+        "property": "Needs attention",
+        "formula": {
+          "string": {
+            "is_not_empty": true
+          }
+        }
+      },
+      "sorts": []
+    },
+    {
+      "database": "Projects",
+      "name": "Active",
+      "filter": {
+        "property": "Status",
+        "status": {
+          "equals": "Active"
+        }
+      },
+      "sorts": []
+    },
+    {
+      "database": "Projects",
+      "name": "Planned",
+      "filter": {
+        "property": "Status",
+        "status": {
+          "equals": "Planned"
+        }
+      },
+      "sorts": []
+    },
+    {
+      "database": "Projects",
+      "name": "Paused",
+      "filter": {
+        "property": "Status",
+        "status": {
+          "equals": "Paused"
+        }
+      },
+      "sorts": []
+    },
+    {
+      "database": "Projects",
+      "name": "Completed",
+      "filter": {
+        "or": [
+          {
+            "property": "Status",
+            "status": {
+              "equals": "Done"
+            }
+          },
+          {
+            "property": "Status",
+            "status": {
+              "equals": "Cancelled"
+            }
+          }
+        ]
+      },
+      "sorts": []
+    },
+    {
+      "database": "Goals",
+      "name": "Active",
+      "filter": {
+        "property": "Status",
+        "status": {
+          "equals": "Active"
+        }
+      },
+      "sorts": []
+    },
+    {
+      "database": "Areas",
+      "name": "Active",
+      "filter": {
+        "property": "State",
+        "select": {
+          "equals": "Active"
+        }
+      },
+      "sorts": []
+    },
+    {
+      "database": "Notes",
+      "name": "Recent",
+      "filter": null,
+      "sorts": [
+        {
+          "timestamp": "last_edited_time",
+          "direction": "descending"
+        }
+      ]
+    },
+    {
+      "database": "Capture Queue",
+      "name": "Inbox",
+      "filter": {
+        "or": [
+          {
+            "property": "Status",
+            "status": {
+              "equals": "New"
+            }
+          },
+          {
+            "property": "Status",
+            "status": {
+              "equals": "Needs clarification"
+            }
+          }
+        ]
+      },
+      "sorts": []
+    },
+    {
+      "database": "Habits",
+      "name": "Current",
+      "filter": {
+        "property": "Status",
+        "select": {
+          "equals": "Active"
+        }
+      },
+      "sorts": []
+    },
+    {
+      "database": "Habit Check-ins",
+      "name": "Recent",
+      "filter": null,
+      "sorts": [
+        {
+          "property": "Event time",
+          "direction": "descending"
+        }
+      ]
+    },
+    {
+      "database": "Planning Log",
+      "name": "Recent",
+      "filter": null,
+      "sorts": [
+        {
+          "property": "Start",
+          "direction": "descending"
+        }
+      ]
+    },
+    {
+      "database": "Calendar Events",
+      "name": "Upcoming appointments",
+      "filter": {
+        "and": [
+          {
+            "property": "Kind",
+            "select": {
+              "equals": "Event"
+            }
+          },
+          {
+            "property": "State",
+            "select": {
+              "equals": "Current"
+            }
+          }
+        ]
+      },
+      "sorts": [
+        {
+          "property": "Start",
+          "direction": "ascending"
+        }
+      ]
+    }
+  ],
+  "inverse_relations": {
+    "Tasks.Parent Task": "Children",
+    "Projects.Parent Project": "Children",
+    "Planning Log.Related week": "Days"
+  },
+  "policy": {
+    "schema": "additive",
+    "apply": "explicit",
+    "data_seed": "separate",
+    "destructive_migration": "not supported"
+  }
+}
